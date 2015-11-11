@@ -1,0 +1,112 @@
+﻿@model EM.Components.Entities.EM_EmailInstances
+
+@{
+    ViewBag.Title = "Step 2/3 - Create/Edit Email";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title</h2>
+</hgroup>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>EM_EmailInstances</legend>
+
+        <h3>Campaign - @ViewData[EM.Web.Code.WebHelper.ViewDataCampaignName]</h3>
+        @* Only for Edit *@
+        @if (Model != null && Model.EmailInstanceID != null)
+        {
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.EmailInstanceID)
+                </div>*@
+            <div class="editor-field">
+                @Html.HiddenFor(model => model.EmailInstanceID)
+            </div>
+        }
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubjectLine)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SubjectLine)
+            @Html.ValidationMessageFor(model => model.SubjectLine)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailBody)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.EmailBody)
+            @Html.ValidationMessageFor(model => model.EmailBody)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EnableTracking)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EnableTracking)
+            @Html.ValidationMessageFor(model => model.EnableTracking)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsDraft)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsDraft)
+            @Html.ValidationMessageFor(model => model.IsDraft)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreatedDate)
+            @Html.ValidationMessageFor(model => model.CreatedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreatedBy)
+            @Html.ValidationMessageFor(model => model.CreatedBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdatedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdatedDate)
+            @Html.ValidationMessageFor(model => model.UpdatedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdatedBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdatedBy)
+            @Html.ValidationMessageFor(model => model.UpdatedBy)
+        </div>
+
+        <p>
+            <button name="button" type="submit" value="Back">Back</button>
+            <button name="button" type="submit" value="Save">Save</button>
+            <button name="button" type="submit" value="SaveNext">Save & Next</button>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

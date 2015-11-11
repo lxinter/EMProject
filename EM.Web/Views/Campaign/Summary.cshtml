@@ -1,0 +1,158 @@
+﻿@model EM.Components.Entities.EM_Campaigns
+
+@{
+    ViewBag.Title = "Campaign Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title</h2>
+</hgroup>
+
+<fieldset>
+    <legend>@Html.ActionLink("Campaign", "Edit", new { id = Model.CampaignID })</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CampaignID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CampaignID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StartDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EndDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CampaignName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CampaignName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CampaignDesc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CampaignDesc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Owner)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Owner)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApprovalRequest)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApprovalRequest)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Approved)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Approved)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApprovedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApprovedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApprovedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApprovedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Guid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Guid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Submitted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Submitted)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UpdatedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdatedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UpdatedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdatedBy)
+    </div>
+</fieldset>
+<fieldset>
+    <legend>
+        @Html.ActionLink("Email", "Edit", "Email", new
+   {
+       id =
+           Model.CampaignID
+   })
+</legend>
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.EM_EmailInstances.First().SubjectLine)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.EM_EmailInstances.First().SubjectLine)
+</div>
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.EM_EmailInstances.First().EmailBody)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.EM_EmailInstances.First().EmailBody)
+</div>
+</fieldset>
+<p>
+    @using (Html.BeginForm())
+    {
+        <button name="button" type="submit" value="@Model.CampaignID">Submit</button>
+    }
+</p>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CampaignID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

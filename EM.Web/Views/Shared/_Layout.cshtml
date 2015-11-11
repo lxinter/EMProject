@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")"
+            type="text/javascript"></script>
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <table style="width:90%">
+        <tr>
+            <td rowspan="2" style="vertical-align:middle;">
+                <p class="site-title">
+                    <a href="/Home">
+                        <img class="logo"
+                             src="~/Images/email-marketing.jpg" />
+                    </a>
+                </p>
+            </td>
+            <td colspan="2"> </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="site-title"> Email Marketing </p>
+            </td>
+            <td>
+                <section id="login">
+                    Hello, <span class="username">@User.Identity.Name</span>!
+                </section>
+            </td>
+        </tr>
+        <tr class="layout-main-content">
+            <td class="layout-nav">
+                <aside>
+                    <h4>Campaign Management</h4>
+                    <ul>
+                        <li>@Html.ActionLink("Create", "Create", "Campaign")</li>
+                        <li>@Html.ActionLink("Campaign List", "Index", "Campaign")</li>
+                        <li>@Html.ActionLink("Approve Requests", "Approve", "Campaign")</li>
+                        <li>@Html.ActionLink("Draft", "Index", "Campaign")</li>
+                        <li>@Html.ActionLink("Reports", "Index", "Campaign")</li>
+                    </ul>
+                    <h4>Leads Management</h4>
+                    <ul>
+                        <li>@Html.ActionLink("Create", "Create", "Leads")</li>
+                        <li>@Html.ActionLink("Leads List", "Index", "Leads")</li>
+                    </ul>
+                </aside>
+            </td>
+            <td style="vertical-align:top; " colspan="2">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </td>
+        </tr>
+        <tr style="text-align:center">
+            <td colspan="3">
+                <footer>
+                    <p>
+                        &copy; @DateTime.Now.Year - Email Marketing Application
+                        <a>Contact Us</a>
+                    </p>
+                </footer>
+            </td>
+        </tr>
+    </table>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css", "~/Content/css")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,176 @@
+﻿@model EM.Components.Entities.EM_Campaigns
+
+@{
+    ViewBag.Title = "Step 1/3 - Create/Edit Campaign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title</h2>
+</hgroup>
+
+<script type="text/javascript" lang="javascript">
+    $(document).ready(function () {
+        $("#StartDate").datepicker({
+            dateFormat: 'mm/dd/yy'
+        });
+    });
+    $(document).ready(function () {
+        $("#EndDate").datepicker({
+            dateFormat: 'mm/dd/yy'
+        });
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>EM_Campaigns</legend>
+        @if (Model != null)
+        {
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CampaignID)
+            </div>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.CampaignID)
+                @Html.HiddenFor(model => model.CampaignID)
+                @Html.ValidationMessageFor(model => model.CampaignID)
+            </div>
+        }
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CampaignName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CampaignName)
+            @Html.ValidationMessageFor(model => model.CampaignName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CampaignDesc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CampaignDesc)
+            @Html.ValidationMessageFor(model => model.CampaignDesc)
+        </div>
+        @if (Model != null && Model.CampaignID > 0)
+        {
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Owner)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Owner)
+                @Html.ValidationMessageFor(model => model.Owner)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ApprovalRequest)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ApprovalRequest)
+                @Html.ValidationMessageFor(model => model.ApprovalRequest)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Approved)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Approved)
+                @Html.ValidationMessageFor(model => model.Approved)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ApprovedBy)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ApprovedBy)
+                @Html.ValidationMessageFor(model => model.ApprovedBy)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ApprovedDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ApprovedDate)
+                @Html.ValidationMessageFor(model => model.ApprovedDate)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Guid)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Guid)
+                @Html.ValidationMessageFor(model => model.Guid)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Submitted)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Submitted)
+                @Html.ValidationMessageFor(model => model.Submitted)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CreatedDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CreatedDate)
+                @Html.ValidationMessageFor(model => model.CreatedDate)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CreatedBy)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CreatedBy)
+                @Html.ValidationMessageFor(model => model.CreatedBy)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UpdatedDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.UpdatedDate)
+                @Html.ValidationMessageFor(model => model.UpdatedDate)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UpdatedBy)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.UpdatedBy)
+                @Html.ValidationMessageFor(model => model.UpdatedBy)
+            </div>
+        }
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EM.Components.Entities.EM_Campaigns>
+
+@{
+    ViewBag.Title = "Approve";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title</h2>
+</hgroup>
+@using (Html.BeginForm()) {
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CampaignID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CampaignName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CampaignDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner)
+        </th>
+       
+      
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <input type="checkbox" name="SelectedObjectIds" value="@item.CampaignID" />@Html.DisplayFor(modelItem => item.CampaignID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CampaignName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CampaignDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    <button name="button" type="submit" value="Approve">Approve</button>
+</p>
+}

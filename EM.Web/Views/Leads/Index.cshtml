@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EM.Components.Entities.EM_Leads>
+
+@{
+    ViewBag.Title = "Leads List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('.delete-link').click(function () {
+            if (confirm('Are you sure you want to delete this User?')) {
+                $.post(this.href);
+            }
+            return false;
+        });
+    }
+    );
+</script>
+
+<hgroup class="title">
+    <h2>@ViewBag.Title</h2>
+</hgroup>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LeadID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsValid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unsubscribed)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeadID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsValid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unsubscribed)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LeadID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LeadID }, new
+           {
+               @class = "delete-link"
+           })
+            </td>
+        </tr>
+    }
+
+</table>
